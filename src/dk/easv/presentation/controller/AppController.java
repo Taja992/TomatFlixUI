@@ -33,7 +33,7 @@ public class AppController implements Initializable {
     private ListView<TopMovie> lvTopFromSimilar;
 
     private int currentIndex = 0;
-    private static final int ITEMS_PER_LOAD = 15;
+    private static final int howManyLoaded = 25;
 
 
     private AppModel model;
@@ -78,34 +78,17 @@ public class AppController implements Initializable {
         lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
     }
 
-//    public void populateMovieNotSeen(AppModel model) {
-//        List<Movie> movies = model.getObsTopMovieNotSeen();
-//        System.out.println("Number of movies: " + movies.size());
-//        for (Movie movie : movies) {
-//            System.out.println("Movie title: " + movie.getTitle());
-//            Label label = new Label(movie.getTitle());
-//            label.setMaxWidth(Double.MAX_VALUE);
-//            VBox movieBox = new VBox(label);
-//            movieBox.setPrefHeight(100);
-//            movieBox.setPrefWidth(100);
-//            movieBox.setPadding(new Insets(10));
-//            listMovie.getChildren().add(movieBox);
-//        }
-//    }
-
     public void populateMovieNotSeen(AppModel model) {
         List<Movie> movies = model.getObsTopMovieNotSeen();
-        System.out.println("Number of movies: " + movies.size());
+        listMovie.getChildren().clear();
         loadMoreItems(movies);
     }
 
     private void loadMoreItems(List<Movie> movies) {
-        int endIndex = Math.min(currentIndex + ITEMS_PER_LOAD, movies.size());
+        int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i);
-            System.out.println("Movie title: " + movie.getTitle());
             Label label = new Label(movie.getTitle());
-            label.setMaxWidth(Double.MAX_VALUE);
             VBox movieBox = new VBox(label);
             movieBox.setPrefHeight(100);
             movieBox.setPrefWidth(100);
