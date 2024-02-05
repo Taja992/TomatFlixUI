@@ -7,6 +7,7 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
@@ -17,7 +18,10 @@ import java.net.URL;
 import java.util.*;
 
 public class AppController implements Initializable {
-
+    @FXML
+    private ScrollPane spUsers;
+    @FXML
+    private HBox listUsers;
     @FXML
     private ScrollPane spTopForUser;
     @FXML
@@ -60,20 +64,20 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scrollPaneListener();
+        scrollPaneListenerTopAvgNotSeen();
+        scrollPaneListenerTopForUser();
+        scrollPaneListenerTopFromSimilar();
+        scrollPaneListenerUsers();
     }
 
     public void setModel(AppModel model) {
         this.model = model;
         lvUsers.setItems(model.getObsUsers());
-        lvTopForUser.setItems(model.getObsTopMovieSeen());
-        lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
+      //  lvTopForUser.setItems(model.getObsTopMovieSeen());
+      //  lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
+      //  lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
-        model.getObsTopMovieSeen().addListener((ListChangeListener.Change<? extends Movie> c) -> {
-            populateTopForUser(model);
-        });
 
         startTimer("Load users");
         model.loadUsers();
@@ -83,6 +87,7 @@ public class AppController implements Initializable {
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
                     model.loadData(selectedUser);
+                    populateUsers(model);
                     populateMovieNotSeen(model);
                     populateTopForUser(model);
                     populateTopFromSimilar(model);
@@ -96,16 +101,16 @@ public class AppController implements Initializable {
         List<Movie> movies = model.getObsTopMovieNotSeen();
         listTopAvgNotSeen.getChildren().clear();
         currentIndex = 0;
-        lvTopAvgNotSeen.setItems(FXCollections.observableArrayList(movies));
         loadMovieNotSeen(movies);
+        spTopAvgNotSeen.setHvalue(0);
     }
 
     public void populateTopForUser(AppModel model) {
         List<Movie> movies = model.getObsTopMovieSeen();
         listTopForUser.getChildren().clear();
         currentIndex = 0;
-        lvTopForUser.setItems(FXCollections.observableArrayList(movies));
         loadListTopForUser(movies);
+        spTopForUser.setHvalue(0);
     }
 
     public void populateTopFromSimilar(AppModel model) {
@@ -113,6 +118,7 @@ public class AppController implements Initializable {
         listTopFromSimilar.getChildren().clear();
         currentIndex = 0;
         loadTopFromSimilar(movies);
+        spTopFromSimilar.setHvalue(0);
     }
 
     private void loadMovieNotSeen(List<Movie> movies) {
@@ -157,13 +163,75 @@ public class AppController implements Initializable {
         currentIndex = endIndex;
     }
 
-    private void scrollPaneListener(){
+    private void scrollPaneListenerTopAvgNotSeen(){
         spTopAvgNotSeen.hvalueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() == spTopAvgNotSeen.getHmax()) {
                 loadMovieNotSeen(model.getObsTopMovieNotSeen());
             }
         });
+    }
 
+    private void scrollPaneListenerTopForUser(){
+        spTopForUser.hvalueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() == spTopForUser.getHmax()) {
+                loadListTopForUser(model.getObsTopMovieSeen());
+            }
+        });
+    }
+
+    private void scrollPaneListenerTopFromSimilar(){
+        spTopFromSimilar.hvalueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() == spTopFromSimilar.getHmax()) {
+                loadTopFromSimilar(model.getObsTopMoviesSimilarUsers());
+            }
+        });
+    }
+
+    /////////////////////////users///////////////////
+
+    public void populateUsers(AppModel model) {
+        List<User> users = model.getObsUsers();
+        listUsers.getChildren().clear();
+        currentIndex = 0;
+        loadUsers(users);
+        spUsers.setHvalue(0); // Reset the scroll pane to the start
+    }
+
+    private void loadUsers(List<User> users) {
+        int endIndex = Math.min(currentIndex + howManyLoaded, users.size());
+        for (int i = currentIndex; i < endIndex; i++) {
+            User user = users.get(i);
+            Label label = new Label(user.getName());
+            VBox userBox = new VBox(label);
+            userBox.setPadding(new Insets(10));
+            userBox.setOnMouseClicked(event -> {
+                highlightUser(userBox);
+                model.loadData(user);
+                populateMovieNotSeen(model);
+                populateTopForUser(model);
+                populateTopFromSimilar(model);
+
+            });
+            listUsers.getChildren().add(userBox);
+        }
+        currentIndex = endIndex;
+    }
+
+    private void highlightUser(VBox userBox) {
+        // Reset the style of all user boxes
+        for (Node node : listUsers.getChildren()) {
+            node.setStyle("");
+        }
+        // Highlight the selected user box
+        userBox.setStyle("-fx-background-color: #4b4646;");
+    }
+
+    private void scrollPaneListenerUsers() {
+        spUsers.hvalueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() == spUsers.getHmax()) {
+                loadUsers(model.getObsUsers());
+            }
+        });
     }
 
 }
