@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -72,29 +74,27 @@ public class AppController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
-        lvUsers.setItems(model.getObsUsers());
-      //  lvTopForUser.setItems(model.getObsTopMovieSeen());
-      //  lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-      //  lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
-
 
         startTimer("Load users");
         model.loadUsers();
         stopTimer();
 
-        lvUsers.getSelectionModel().selectedItemProperty().addListener(
-                (observableValue, oldUser, selectedUser) -> {
-                    startTimer("Loading all data for user: " + selectedUser);
-                    model.loadData(selectedUser);
-                    populateUsers(model);
-                    populateMovieNotSeen(model);
-                    populateTopForUser(model);
-                    populateTopFromSimilar(model);
-                });
+        // Populate users directly
+        populateUsers(model);
 
         // Select the logged-in user in the listview, automagically trigger the listener above
-        lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
+        User loggedInUser = model.getObsLoggedInUser();
+        for (Node node : listUsers.getChildren()) {
+            VBox userBox = (VBox) node;
+            Label label = (Label) userBox.getChildren().get(0);
+            if (label.getText().equals(loggedInUser.getName())) {
+                userBox.fireEvent(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
+                        0, 0, 0, MouseButton.PRIMARY, 1, true, true,
+                        true, true, true, true, true, true, true, true, null));
+                break;
+            }
+        }
     }
 
     public void populateMovieNotSeen(AppModel model) {

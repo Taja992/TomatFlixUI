@@ -28,7 +28,6 @@
       </ScrollPane>
       <ListView fx:id="lvTopSimilarUsers" layoutX="916.0" layoutY="36.0" prefHeight="650.0" prefWidth="266.0" />
       <Label layoutX="301.0" layoutY="119.0" text="Users" />
-      <ListView fx:id="lvUsers" layoutX="21.0" layoutY="36.0" prefHeight="200.0" prefWidth="266.0" />
       <Label layoutX="916.0" layoutY="14.0" text="Top most similar users" />
       <ScrollPane fx:id="spUsers" fitToHeight="true" layoutX="300.0" layoutY="136.0" prefWidth="500.0">
          <content>

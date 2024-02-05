@@ -45,6 +45,7 @@ public class LogInController implements Initializable {
 
 
 
+
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
