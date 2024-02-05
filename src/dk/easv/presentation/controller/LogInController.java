@@ -41,7 +41,7 @@ public class LogInController implements Initializable {
             AppController controller = loader.getController();
 
             controller.setModel(model);
-           // controller.populateMovieNotSeen(model);
+
 
 
         } catch (IOException e) {
