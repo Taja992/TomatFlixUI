@@ -8,31 +8,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1494.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <children>
-      <Label layoutX="236.0" layoutY="285.0" text="Top avg movies for user" />
-      <ScrollPane fx:id="spTopForUser" fitToHeight="true" layoutX="236.0" layoutY="302.0" prefWidth="500.0">
+      <Label layoutX="145.0" layoutY="50.0" text="Users" />
+      <ScrollPane fx:id="spUsers" fitToHeight="true" layoutX="145.0" layoutY="67.0" prefWidth="500.0">
+         <content>
+            <HBox fx:id="listUsers" fillHeight="false" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="145.0" layoutY="182.0" text="Top avg movies for user" />
+      <ScrollPane fx:id="spTopForUser" fitToHeight="true" layoutX="145.0" layoutY="199.0" prefWidth="500.0">
          <content>
             <HBox fx:id="listTopForUser" fillHeight="false" />
          </content>
       </ScrollPane>
-      <Label layoutX="236.0" layoutY="442.0" text="Top Avarage Rated Movies user did not see" />
-      <ScrollPane fx:id="spTopAvgNotSeen" fitToHeight="true" layoutX="236.0" layoutY="459.0" prefWidth="500.0">
+      <Label layoutX="145.0" layoutY="316.0" text="Top Avarage Rated Movies user did not see" />
+      <ScrollPane fx:id="spTopAvgNotSeen" fitToHeight="true" layoutX="145.0" layoutY="333.0" prefWidth="500.0">
          <content>
             <HBox fx:id="listTopAvgNotSeen" fillHeight="false" />
          </content>
       </ScrollPane>
-      <Label layoutX="236.0" layoutY="578.0" text="Top movies from similar users" />
-      <ScrollPane fx:id="spTopFromSimilar" fitToHeight="true" layoutX="236.0" layoutY="595.0" prefWidth="500.0">
+      <Label layoutX="145.0" layoutY="423.0" text="Top most similar users" />
+      <ScrollPane fx:id="spTopSimilarUsers" fitToHeight="true" layoutX="145.0" layoutY="440.0" prefWidth="500.0">
+         <content>
+            <HBox fx:id="listTopSimilarUsers" fillHeight="false" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="145.0" layoutY="536.0" text="Top movies from similar users" />
+      <ScrollPane fx:id="spTopFromSimilar" fitToHeight="true" layoutX="145.0" layoutY="553.0" prefWidth="500.0">
          <content>
             <HBox fx:id="listTopFromSimilar" fillHeight="false" />
          </content>
       </ScrollPane>
       <ListView fx:id="lvTopSimilarUsers" layoutX="916.0" layoutY="36.0" prefHeight="650.0" prefWidth="266.0" />
-      <Label layoutX="301.0" layoutY="119.0" text="Users" />
-      <Label layoutX="916.0" layoutY="14.0" text="Top most similar users" />
-      <ScrollPane fx:id="spUsers" fitToHeight="true" layoutX="300.0" layoutY="136.0" prefWidth="500.0">
-         <content>
-            <HBox fx:id="listUsers" fillHeight="false" />
-         </content>
-      </ScrollPane>
    </children>
 </AnchorPane>

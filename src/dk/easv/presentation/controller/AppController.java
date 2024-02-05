@@ -20,6 +20,11 @@ import java.net.URL;
 import java.util.*;
 
 public class AppController implements Initializable {
+
+    @FXML
+    private ScrollPane spTopSimilarUsers;
+    @FXML
+    private HBox listTopSimilarUsers;
     @FXML
     private ScrollPane spUsers;
     @FXML
