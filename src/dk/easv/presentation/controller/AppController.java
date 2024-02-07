@@ -41,17 +41,6 @@ public class AppController implements Initializable {
     private ScrollPane spTopAvgNotSeen;
     @FXML
     private HBox listTopAvgNotSeen;
-    @FXML
-    private ListView<User> lvUsers;
-    @FXML
-    private ListView<Movie> lvTopForUser;
-    @FXML
-    private ListView<Movie> lvTopAvgNotSeen;
-    @FXML
-    private ListView<UserSimilarity> lvTopSimilarUsers;
-    @FXML
-    private ListView<TopMovie> lvTopFromSimilar;
-
     private int currentIndex = 0;
     private static final int howManyLoaded = 25;
 
@@ -79,8 +68,6 @@ public class AppController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
-        lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-
         startTimer("Load users");
         model.loadUsers();
         stopTimer();
@@ -215,7 +202,7 @@ public class AppController implements Initializable {
                 populateMovieNotSeen(model);
                 populateTopForUser(model);
                 populateTopFromSimilar(model);
-
+                populateSimilarUsers(model);
             });
             listUsers.getChildren().add(userBox);
         }
@@ -239,4 +226,25 @@ public class AppController implements Initializable {
         });
     }
 
+    private void loadListSimilarUsers(List<UserSimilarity> userSimilarities) {
+        int endIndex = Math.min(currentIndex + howManyLoaded, userSimilarities.size());
+        for (int i = currentIndex; i < endIndex; i++) {
+            UserSimilarity userSimilarity = userSimilarities.get(i);
+            Label label = new Label(userSimilarity.getName() + " - Similarity: " + userSimilarity.getSimilarityPercent());
+            VBox userBox = new VBox(label);
+            userBox.setPrefHeight(100);
+            userBox.setPrefWidth(100);
+            userBox.setPadding(new Insets(10));
+            listTopSimilarUsers.getChildren().add(userBox);
+        }
+        currentIndex = endIndex;
+    }
+
+    public void populateSimilarUsers(AppModel model) {
+        List<UserSimilarity> userSimilarities = model.getObsSimilarUsers();
+        listTopSimilarUsers.getChildren().clear();
+        currentIndex = 0;
+        loadListSimilarUsers(userSimilarities);
+        spTopSimilarUsers.setHvalue(0);
+    }
 }
