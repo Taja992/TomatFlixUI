@@ -2,10 +2,12 @@ package dk.easv.presentation.model;
 
 import dk.easv.entities.*;
 import dk.easv.logic.LogicManager;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 
 public class AppModel {
 
@@ -25,17 +27,32 @@ public class AppModel {
     }
 
     public void loadData(User user) {
-        obsTopMovieSeen.clear();
-        obsTopMovieSeen.addAll(logic.getTopAverageRatedMovies(user));
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                ObservableList<Movie> topMoviesSeen = FXCollections.observableArrayList(logic.getTopAverageRatedMovies(user));
+                ObservableList<Movie> topMoviesNotSeen = FXCollections.observableArrayList(logic.getTopAverageRatedMoviesUserDidNotSee(user));
+                ObservableList<UserSimilarity> similarUsers = FXCollections.observableArrayList(logic.getTopSimilarUsers(user));
+                ObservableList<TopMovie> topMoviesSimilarUsers = FXCollections.observableArrayList(logic.getTopMoviesFromSimilarPeople(user));
 
-        obsTopMovieNotSeen.clear();
-        obsTopMovieNotSeen.addAll(logic.getTopAverageRatedMoviesUserDidNotSee(user));
+                Platform.runLater(() -> {
+                    obsTopMovieSeen.clear();
+                    obsTopMovieSeen.addAll(topMoviesSeen);
 
-        obsSimilarUsers.clear();
-        obsSimilarUsers.addAll(logic.getTopSimilarUsers(user));
+                    obsTopMovieNotSeen.clear();
+                    obsTopMovieNotSeen.addAll(topMoviesNotSeen);
 
-        obsTopMoviesSimilarUsers.clear();
-        obsTopMoviesSimilarUsers.addAll(logic.getTopMoviesFromSimilarPeople(user));
+                    obsSimilarUsers.clear();
+                    obsSimilarUsers.addAll(similarUsers);
+
+                    obsTopMoviesSimilarUsers.clear();
+                    obsTopMoviesSimilarUsers.addAll(topMoviesSimilarUsers);
+                });
+
+                return null;
+            }
+        };
+        new Thread(task).start();
     }
 
     public ObservableList<User> getObsUsers() {
