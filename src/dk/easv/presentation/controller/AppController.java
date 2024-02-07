@@ -2,6 +2,7 @@ package dk.easv.presentation.controller;
 
 import dk.easv.entities.*;
 import dk.easv.presentation.model.AppModel;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -198,16 +199,22 @@ public class AppController implements Initializable {
             userBox.setPadding(new Insets(10));
             userBox.setOnMouseClicked(event -> {
                 highlightUser(userBox);
-                model.loadData(user);
-                populateMovieNotSeen(model);
-                populateTopForUser(model);
-                populateTopFromSimilar(model);
-                populateSimilarUsers(model);
+                Thread t = new Thread(() -> {
+                    model.loadData(user);
+                    Platform.runLater(() -> {
+                        populateMovieNotSeen(model);
+                        populateTopForUser(model);
+                        populateTopFromSimilar(model);
+                        populateSimilarUsers(model);
+                    });
+                });
+                t.start();
             });
             listUsers.getChildren().add(userBox);
         }
         currentIndex = endIndex;
     }
+
 
     private void highlightUser(VBox userBox) {
         // Reset the style of all user boxes
