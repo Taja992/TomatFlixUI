@@ -5,6 +5,7 @@ import dk.easv.presentation.model.AppModel;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -14,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -65,6 +67,7 @@ public class AppController implements Initializable {
         scrollPaneListenerTopForUser();
         scrollPaneListenerTopFromSimilar();
         scrollPaneListenerUsers();
+        spScroll();
     }
 
     public void setModel(AppModel model) {
@@ -253,5 +256,48 @@ public class AppController implements Initializable {
         currentIndex = 0;
         loadListSimilarUsers(userSimilarities);
         spTopSimilarUsers.setHvalue(0);
+    }
+
+    private void spScroll(){
+        addScrollEffect(spTopSimilarUsers);
+        addScrollEffect(spUsers);
+        addScrollEffect(spTopForUser);
+        addScrollEffect(spTopFromSimilar);
+        addScrollEffect(spTopAvgNotSeen);
+    }
+
+    private void addScrollEffect(ScrollPane sp) {
+        sp.addEventFilter(ScrollEvent.SCROLL, event -> {
+            if (event.getDeltaX() == 0 && event.getDeltaY() != 0) {
+                // consume the vertical scroll event and create a new horizontal scroll event
+                event.consume();
+                ScrollEvent horizontalEvent = new ScrollEvent(
+                        event.getSource(),
+                        event.getTarget(),
+                        event.getEventType(),
+                        event.getX(),
+                        event.getY(),
+                        event.getScreenX(),
+                        event.getScreenY(),
+                        event.isShiftDown(),
+                        event.isControlDown(),
+                        event.isAltDown(),
+                        event.isMetaDown(),
+                        event.isDirect(),
+                        event.isInertia(),
+                        event.getDeltaY(), // use negative value to reverse the direction
+                        0, // deltaY is zero
+                        event.getDeltaY(), // use negative value to reverse the direction
+                        0, // totalDeltaY is zero
+                        event.getTextDeltaXUnits(),
+                        -event.getDeltaY(), // use negative value to reverse the direction
+                        event.getTextDeltaYUnits(),
+                        0, // textDeltaY is zero
+                        event.getTouchCount(),
+                        event.getPickResult()
+                );
+                Event.fireEvent(event.getTarget(), horizontalEvent);
+            }
+        });
     }
 }
