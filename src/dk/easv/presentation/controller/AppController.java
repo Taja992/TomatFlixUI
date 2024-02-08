@@ -9,16 +9,22 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
+import java.io.File;
 import java.net.URL;
 import java.util.*;
 
@@ -45,7 +51,7 @@ public class AppController implements Initializable {
     @FXML
     private HBox listTopAvgNotSeen;
     private int currentIndex = 0;
-    private static final int howManyLoaded = 25;
+    private static final int howManyLoaded = 13;
 
 
     private AppModel model;
@@ -118,11 +124,28 @@ public class AppController implements Initializable {
     }
 
     private void loadMovieNotSeen(List<Movie> movies) {
+        File imagesDir = new File("images");
+        File[] imageFiles = imagesDir.listFiles();
+
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i);
+
+            Image image = null;
+            if (imageFiles != null && imageFiles.length > 0) {
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+            }
+
+           // Image image = new Image("https://picsum.photos/100?random=" + i);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
             Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(label);
+            VBox movieBox = new VBox(imageView, label);
+            movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
             movieBox.setPrefWidth(100);
             movieBox.setPadding(new Insets(10));
@@ -132,11 +155,29 @@ public class AppController implements Initializable {
     }
 
     private void loadListTopForUser(List<Movie> movies) {
+        File imagesDir = new File("images");
+        File[] imageFiles = imagesDir.listFiles();
+
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i);
+
+
+            Image image = null;
+            if (imageFiles != null && imageFiles.length > 0) {
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+            }
+
+           // Image image = new Image("https://picsum.photos/100?random=" + i);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
             Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(label);
+            VBox movieBox = new VBox(imageView, label);
+            movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
             movieBox.setPrefWidth(100);
             movieBox.setPadding(new Insets(10));
@@ -146,11 +187,28 @@ public class AppController implements Initializable {
     }
 
     private void loadTopFromSimilar(List<TopMovie> movies) {
+        File imagesDir = new File("images"); // Directory where your images are stored
+        File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
+
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i).getMovie();
+
+            Image image = null;
+            if (imageFiles != null && imageFiles.length > 0) {
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+            }
+
+          //  Image image = new Image("https://picsum.photos/100?random=" + i);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
             Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(label);
+            VBox movieBox = new VBox(imageView, label);
+            movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
             movieBox.setPrefWidth(100);
             movieBox.setPadding(new Insets(10));
@@ -199,6 +257,7 @@ public class AppController implements Initializable {
             User user = users.get(i);
             Label label = new Label(user.getName());
             VBox userBox = new VBox(label);
+            userBox.getStyleClass().add("user-box");
             userBox.setPadding(new Insets(10));
             userBox.setOnMouseClicked(event -> {
                 highlightUser(userBox);
@@ -241,8 +300,12 @@ public class AppController implements Initializable {
         for (int i = currentIndex; i < endIndex; i++) {
             UserSimilarity userSimilarity = userSimilarities.get(i);
             Label label = new Label(userSimilarity.getName() + " - Similarity: " + userSimilarity.getSimilarityPercent());
-            VBox userBox = new VBox(label);
-            userBox.setPrefHeight(100);
+            Circle circle = new Circle(20);
+            circle.setFill(Color.TEAL);
+            VBox userBox = new VBox(circle, label);
+            userBox.setAlignment(Pos.CENTER);
+            userBox.getStyleClass().add("user-box");
+            userBox.setPrefHeight(25);
             userBox.setPrefWidth(100);
             userBox.setPadding(new Insets(10));
             listTopSimilarUsers.getChildren().add(userBox);
@@ -285,9 +348,9 @@ public class AppController implements Initializable {
                         event.isMetaDown(),
                         event.isDirect(),
                         event.isInertia(),
-                        event.getDeltaY(), // use negative value to reverse the direction
+                        event.getDeltaY(),
                         0, // deltaY is zero
-                        event.getDeltaY(), // use negative value to reverse the direction
+                        event.getDeltaY(),
                         0, // totalDeltaY is zero
                         event.getTextDeltaXUnits(),
                         -event.getDeltaY(), // use negative value to reverse the direction

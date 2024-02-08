@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="804.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -17,32 +12,9 @@
             <VBox>
                <children>
                   <Label text="Users" />
-                  <ScrollPane prefHeight="89.0" prefWidth="977.0">
+                  <ScrollPane fx:id="spUsers" prefHeight="89.0" prefWidth="977.0">
                      <content>
-                        <HBox spacing="10.0">
-                           <children>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="listUsers" spacing="10.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -54,93 +26,9 @@
             <VBox HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Top Avarage Rated Movies user did not see" />
-                  <ScrollPane prefHeight="203.0" prefWidth="949.0">
+                  <ScrollPane fx:id="spTopAvgNotSeen" prefHeight="203.0" prefWidth="949.0">
                      <content>
-                        <HBox>
-                           <children>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61145413_p0.png" />
-                                       </image>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </ImageView>
-                                    <Label text="Hello" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/58643558_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Something" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61169700_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="listTopAvgNotSeen" />
                      </content>
                   </ScrollPane>
                </children>
@@ -152,99 +40,9 @@
             <VBox HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Top avg movies for user" />
-                  <ScrollPane prefHeight="203.0" prefWidth="949.0">
+                  <ScrollPane fx:id="spTopForUser" prefHeight="203.0" prefWidth="949.0">
                      <content>
-                        <HBox>
-                           <children>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61145413_p0.png" />
-                                       </image>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </ImageView>
-                                    <Label text="Hello" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/58643558_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Something" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61169700_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="listTopForUser" />
                      </content>
                   </ScrollPane>
                </children>
@@ -256,32 +54,9 @@
             <VBox>
                <children>
                   <Label text="Top most similar users" />
-                  <ScrollPane prefHeight="89.0" prefWidth="977.0">
+                  <ScrollPane fx:id="spTopSimilarUsers" prefHeight="89.0" prefWidth="977.0">
                      <content>
-                        <HBox spacing="10.0">
-                           <children>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                              <Circle fill="#909090" radius="26.0" stroke="BLACK" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Circle>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="listTopSimilarUsers" spacing="10.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -293,99 +68,9 @@
             <VBox HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Top movies from similar users" />
-                  <ScrollPane prefHeight="203.0" prefWidth="949.0">
+                  <ScrollPane fx:id="spTopFromSimilar" prefHeight="203.0" prefWidth="949.0">
                      <content>
-                        <HBox>
-                           <children>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61145413_p0.png" />
-                                       </image>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </ImageView>
-                                    <Label text="Hello" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/58643558_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Something" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../Pictures/Kitz/61169700_p0.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Label text="Label" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
+                        <HBox fx:id="listTopFromSimilar" />
                      </content>
                   </ScrollPane>
                </children>
