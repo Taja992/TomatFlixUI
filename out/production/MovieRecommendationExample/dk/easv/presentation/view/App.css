@@ -1,0 +1,28 @@
+.main {
+    -fx-background-color: black;
+}
+
+.vBoxMain {
+    -fx-background-color: black;
+}
+
+.scroll-pane, .vbox, .hbox {
+    -fx-background-color: black;
+}
+
+.scroll-pane .content, .vbox .content, .hbox .content {
+    -fx-background-color: black;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.movie-box{
+    -fx-background-color: black;
+}
+
+.user-box {
+    -fx-background-color: black;
+}
+
