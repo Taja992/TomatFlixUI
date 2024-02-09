@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -13,10 +14,10 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.TestViewController">
    <children>
-      <AnchorPane maxWidth="153.0" minWidth="138.0" prefHeight="400.0" prefWidth="138.0" style="-fx-background-color: #333333;">
+      <AnchorPane maxWidth="153.0" minWidth="138.0" prefHeight="400.0" prefWidth="138.0" style="-fx-background-color: #1e1e1e;">
          <children>
-            <Circle fx:id="tomatTop" cache="true" fill="#695c6199" layoutX="138.0" layoutY="127.0" radius="100.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.rightAnchor="-100.0" />
-            <Circle fx:id="tomatBottom" fill="#695c6199" layoutX="40.0" layoutY="354.0" radius="100.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="-80.0" />
+            <Circle fx:id="tomatTop" cache="true" fill="#61515799" layoutX="138.0" layoutY="127.0" radius="100.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.rightAnchor="-100.0" />
+            <Circle fx:id="tomatBottom" fill="#61515799" layoutX="40.0" layoutY="354.0" radius="100.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="-80.0" />
             <Label layoutX="35.0" layoutY="11.0" minWidth="100.0" prefHeight="31.0" prefWidth="100.0" text="TomatFlix" textFill="#ef267d">
                <font>
                   <Font name="Tw Cen MT Condensed Bold" size="28.0" />
@@ -27,9 +28,9 @@
                   <Font name="System Bold" size="8.0" />
                </font>
             </Label>
-            <VBox alignment="TOP_CENTER" layoutX="15.0" layoutY="116.0" prefHeight="167.0" prefWidth="108.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" layoutX="15.0" layoutY="116.0" prefHeight="226.0" prefWidth="108.0" spacing="18.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: ef267d; -fx-font-size: 10; -fx-font-weight: bold;" text="Top Movies Seen" textAlignment="CENTER" wrapText="true">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: ef267d; -fx-font-size: 10; -fx-font-weight: bold;" text="Top Movies Seen" textAlignment="CENTER" textFill="#1e1e1e" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -65,13 +66,16 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox fx:id="Row1HBox" alignment="TOP_CENTER" fillHeight="false" prefHeight="58.0" spacing="8.0" style="-fx-background-color: green;">
+                  <HBox fx:id="Row1HBox" alignment="TOP_CENTER" fillHeight="false" prefHeight="58.0" spacing="8.0" style="-fx-background-color: green;" VBox.vgrow="ALWAYS">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&lt;" wrappingWidth="18.0">
+                        <VBox HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
-                        </Text>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&lt;" wrappingWidth="18.0" />
+                           </children>
+                        </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#ef267d" height="65.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
@@ -102,7 +106,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" prefHeight="135.0" prefWidth="434.0">
+            <VBox fx:id="Row1VBox1" layoutX="10.0" layoutY="10.0" prefHeight="135.0" prefWidth="434.0">
                <children>
                   <Label style="-fx-text-fill: white; -fx-font-size: 28;" text="Label">
                      <font>
@@ -112,43 +116,51 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox prefHeight="58.0" prefWidth="400.0" spacing="4.0" style="-fx-background-color: green;">
+                  <HBox fx:id="Row1HBox1" alignment="TOP_CENTER" fillHeight="false" prefHeight="58.0" spacing="8.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&lt;" wrappingWidth="26.39996314048767" HBox.hgrow="ALWAYS">
+                        <VBox HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="10.0" />
                            </HBox.margin>
-                        </Text>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&lt;" wrappingWidth="18.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#ef267d" height="65.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                               <Label style="-fx-text-fill: white; -fx-font-size: 10;" text="*insert name here*" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#ef267d" height="65.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                               <Label style="-fx-text-fill: white; -fx-font-size: 10;" text="*insert name here*" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#ef267d" height="65.0" stroke="TRANSPARENT" strokeType="INSIDE" width="120.0" />
                               <Label style="-fx-text-fill: white; -fx-font-size: 10;" text="*insert name here*" />
                            </children>
                         </VBox>
-                        <Text layoutX="10.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&gt;" wrappingWidth="18.4000244140625" HBox.hgrow="ALWAYS">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 30;" text="&gt;" textAlignment="RIGHT" wrappingWidth="18.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="10.0" />
                            </HBox.margin>
                         </Text>
                      </children>
                      <VBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="5.0" right="5.0" />
                      </VBox.margin>
                   </HBox>
                </children>
             </VBox>
+            <ScrollPane fx:id="scrollTopFromSimUsers" hbarPolicy="NEVER" prefHeight="98.0" prefWidth="438.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="520.0" />
+              </content>
+            </ScrollPane>
          </children>
       </VBox>
    </children>
