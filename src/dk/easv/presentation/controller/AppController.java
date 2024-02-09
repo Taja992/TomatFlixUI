@@ -51,7 +51,8 @@ public class AppController implements Initializable {
     @FXML
     private HBox listTopAvgNotSeen;
     private int currentIndex = 0;
-    private static final int howManyLoaded = 13;
+    private static final int howManyLoaded = 20;
+    private static final int howManyUsersLoaded = 13;
 
 
     private AppModel model;

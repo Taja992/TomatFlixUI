@@ -8,110 +8,135 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" stylesheets="/dk/easv/presentation/view/App.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="804.0" prefWidth="1155.0" styleClass="vBoxMain" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
-   <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+<ScrollPane fitToWidth="true" prefHeight="737.0" prefWidth="1194.0" styleClass="main" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+   <content>
+      <VBox spacing="40.0" styleClass="vBoxMain" stylesheets="/dk/easv/presentation/view/App.css">
          <children>
-            <Pane fx:id="logoPane" prefHeight="63.0" prefWidth="247.0" styleClass="logo" />
-            <Button mnemonicParsing="false" text="Home">
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="TV Shows" />
-            <Button mnemonicParsing="false" text="Movies" />
-            <Button mnemonicParsing="false" text="Latest" />
-            <Button mnemonicParsing="false" text="My List" />
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <VBox>
+            <HBox alignment="CENTER_LEFT" minHeight="90.0" minWidth="1200.0" prefHeight="90.0" prefWidth="1317.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Users" />
-                  <ScrollPane fx:id="spUsers" minHeight="37.0" minWidth="900.0">
-                     <content>
-                        <HBox fx:id="listUsers" />
-                     </content>
-                  </ScrollPane>
+                  <Pane fx:id="logoPane" prefWidth="247.0" scaleShape="false" styleClass="logo">
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Button mnemonicParsing="false" text="Home">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="TV Shows" />
+                  <Button mnemonicParsing="false" text="Movies" />
+                  <Button mnemonicParsing="false" text="Latest" />
+                  <Button mnemonicParsing="false" text="My List" />
                </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="220.0" prefWidth="600.0">
-         <children>
-            <VBox HBox.hgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="1155.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Top Avarage Rated Movies user did not see" />
-                  <ScrollPane fx:id="spTopAvgNotSeen" style="-fx-background-color: black;">
-                     <content>
-                        <HBox fx:id="listTopAvgNotSeen" style="-fx-background-color: black;" />
-                     </content>
-                  </ScrollPane>
+                  <VBox minHeight="120.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="lblTitle" text="Users" />
+                        <ScrollPane fx:id="spUsers" minHeight="37.0" minWidth="900.0">
+                           <content>
+                              <HBox fx:id="listUsers" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="30.0" right="30.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="220.0" prefWidth="600.0">
-         <children>
-            <VBox HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="220.0" prefWidth="600.0" styleClass="hboxTest2" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Top avg movies for user" />
-                  <ScrollPane fx:id="spTopForUser">
-                     <content>
-                        <HBox fx:id="listTopForUser" />
-                     </content>
-                  </ScrollPane>
+                  <VBox minHeight="150.0" styleClass="vboxTest" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="lblTitle" text="Top Average Rated Movies user did not see" />
+                        <ScrollPane fx:id="spTopAvgNotSeen" fitToWidth="true" styleClass="spTest">
+                           <content>
+                              <HBox fx:id="listTopAvgNotSeen" styleClass="hboxtest" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="30.0" right="30.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="164.0" prefWidth="1155.0">
-         <children>
-            <VBox>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="220.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Top most similar users" />
-                  <ScrollPane fx:id="spTopSimilarUsers" minHeight="37.0" minWidth="900.0">
-                     <content>
-                        <HBox fx:id="listTopSimilarUsers" />
-                     </content>
-                  </ScrollPane>
+                  <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="lblTitle" text="Top Average Movies for user" />
+                        <ScrollPane fx:id="spTopForUser" fitToWidth="true">
+                           <content>
+                              <HBox fx:id="listTopForUser" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="220.0" prefWidth="600.0">
-         <children>
-            <VBox HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="164.0" prefWidth="1155.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Top movies from similar users" />
-                  <ScrollPane fx:id="spTopFromSimilar">
-                     <content>
-                        <HBox fx:id="listTopFromSimilar" />
-                     </content>
-                  </ScrollPane>
+                  <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="lblTitle" text="Top most similar users" />
+                        <ScrollPane fx:id="spTopSimilarUsers" minHeight="37.0" minWidth="900.0">
+                           <content>
+                              <HBox fx:id="listTopSimilarUsers" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="220.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="lblTitle" text="Top movies from similar users" />
+                        <ScrollPane fx:id="spTopFromSimilar" fitToWidth="true">
+                           <content>
+                              <HBox fx:id="listTopFromSimilar" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
-         <padding>
-            <Insets left="30.0" right="30.0" />
-         </padding>
-      </HBox>
-   </children>
-</VBox>
+      </VBox>
+   </content>
+</ScrollPane>

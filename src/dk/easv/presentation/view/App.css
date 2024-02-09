@@ -2,19 +2,27 @@
 
 
 .main {
-    -fx-background-color: black;
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, rgb(0, 0, 0), rgb(50, 50, 50));
 }
 
 .vBoxMain {
-    -fx-background-color: black;
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, rgb(0, 0, 0), rgb(50, 50, 50));
 }
 
 .scroll-pane, .vbox, .hbox {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.hbox {
+    -fx-background-color: transparent;
 }
 
 .scroll-pane .content, .vbox .content, .hbox .content {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 .scroll-pane .scroll-bar:vertical {
@@ -47,17 +55,24 @@
 }
 
 .movie-box{
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 .user-box {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
 }
 
 .logo {
     -fx-background-image: url("TomatFlix-2-9-2024.png");
-    -fx-background-size: cover;
+    -fx-background-size: stretch;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
+
+.lblTitle {
+    -fx-font-size: 32;
+}
+
+
+
 
