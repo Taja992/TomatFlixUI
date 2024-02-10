@@ -132,28 +132,32 @@ public class AppController implements Initializable {
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i);
 
+
             Image image = null;
             if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
             }
 
-           // Image image = new Image("https://picsum.photos/100?random=" + i);
+
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
+            imageView.setFitHeight(200);
+            imageView.setFitWidth(250);
             imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
+            movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(100);
-            movieBox.setPadding(new Insets(10));
+            movieBox.setPrefWidth(200);
+            movieBox.setMinWidth(200);
             listTopAvgNotSeen.getChildren().add(movieBox);
+            listTopAvgNotSeen.setSpacing(65);
         }
         currentIndex = endIndex;
     }
+
 
     private void loadListTopForUser(List<Movie> movies) {
         File imagesDir = new File("images");
@@ -163,27 +167,27 @@ public class AppController implements Initializable {
         for (int i = currentIndex; i < endIndex; i++) {
             Movie movie = movies.get(i);
 
-
             Image image = null;
             if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
             }
 
-           // Image image = new Image("https://picsum.photos/100?random=" + i);
+
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(200);
-          //  imageView.setPreserveRatio(true);
+            imageView.setFitHeight(200);
+            imageView.setFitWidth(250);
+            imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
+            movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
             movieBox.setPrefWidth(200);
             movieBox.setMinWidth(200);
-            movieBox.setPadding(new Insets(10));
             listTopForUser.getChildren().add(movieBox);
+            listTopForUser.setSpacing(65);
         }
         currentIndex = endIndex;
     }
@@ -198,23 +202,25 @@ public class AppController implements Initializable {
 
             Image image = null;
             if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
             }
 
-          //  Image image = new Image("https://picsum.photos/100?random=" + i);
+
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
+            imageView.setFitHeight(200);
+            imageView.setFitWidth(250);
             imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
+            movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(100);
-            movieBox.setPadding(new Insets(10));
+            movieBox.setPrefWidth(200);
+            movieBox.setMinWidth(200);
             listTopFromSimilar.getChildren().add(movieBox);
+            listTopFromSimilar.setSpacing(65);
         }
         currentIndex = endIndex;
     }

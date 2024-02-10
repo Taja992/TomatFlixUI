@@ -39,7 +39,7 @@
       </HBox>
       <ScrollPane fitToWidth="true" prefHeight="737.0" prefWidth="1194.0" styleClass="spMain">
          <content>
-            <VBox spacing="40.0" styleClass="vBoxMain" stylesheets="/dk/easv/presentation/view/App.css">
+            <VBox spacing="10.0" styleClass="vBoxMain" stylesheets="/dk/easv/presentation/view/App.css">
                <children>
                   <HBox prefWidth="1155.0" VBox.vgrow="ALWAYS">
                      <children>
@@ -63,16 +63,19 @@
                         <VBox minHeight="150.0" styleClass="vboxTest" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top Average Rated Movies user did not see" />
-                              <ScrollPane fx:id="spTopAvgNotSeen" fitToWidth="true" styleClass="spTest">
+                              <ScrollPane fx:id="spTopAvgNotSeen" fitToHeight="true" fitToWidth="true" minHeight="185.0" styleClass="spTest">
                                  <content>
                                     <HBox fx:id="listTopAvgNotSeen" styleClass="hboxtest" />
                                  </content>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
                               </ScrollPane>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="30.0" right="30.0" />
+                        <Insets left="10.0" right="30.0" />
                      </padding>
                      <VBox.margin>
                         <Insets />
@@ -83,16 +86,19 @@
                         <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top Average Movies for user" />
-                              <ScrollPane fx:id="spTopForUser" fitToWidth="true">
+                              <ScrollPane fx:id="spTopForUser" fitToWidth="true" minHeight="185.0">
                                  <content>
                                     <HBox fx:id="listTopForUser" />
                                  </content>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
                               </ScrollPane>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="30.0" right="30.0" />
+                        <Insets left="10.0" right="30.0" />
                      </padding>
                      <VBox.margin>
                         <Insets />
@@ -107,12 +113,15 @@
                                  <content>
                                     <HBox fx:id="listTopSimilarUsers" />
                                  </content>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
                               </ScrollPane>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets left="10.0" right="30.0" />
                      </padding>
                      <VBox.margin>
                         <Insets />
@@ -123,16 +132,19 @@
                         <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top movies from similar users" />
-                              <ScrollPane fx:id="spTopFromSimilar" fitToWidth="true">
+                              <ScrollPane fx:id="spTopFromSimilar" fitToWidth="true" minHeight="185.0">
                                  <content>
                                     <HBox fx:id="listTopFromSimilar" />
                                  </content>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
                               </ScrollPane>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets left="30.0" right="30.0" />
+                        <Insets left="10.0" right="30.0" />
                      </padding>
                      <VBox.margin>
                         <Insets />
