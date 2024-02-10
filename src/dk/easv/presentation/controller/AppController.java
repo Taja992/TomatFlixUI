@@ -22,6 +22,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.File;
@@ -90,7 +91,7 @@ public class AppController implements Initializable {
         User loggedInUser = model.getObsLoggedInUser();
         for (Node node : listUsers.getChildren()) {
             VBox userBox = (VBox) node;
-            Label label = (Label) userBox.getChildren().get(0);
+            Label label = (Label) userBox.getChildren().get(1);
             if (label.getText().equals(loggedInUser.getName())) {
                 userBox.fireEvent(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
                         0, 0, 0, MouseButton.PRIMARY, 1, true, true,
@@ -241,11 +242,27 @@ public class AppController implements Initializable {
     }
 
     private void loadUsers(List<User> users) {
+        File imagesDir = new File("pfpImages");
+        File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
+
         int endIndex = Math.min(currentIndex + howManyLoaded, users.size());
         for (int i = currentIndex; i < endIndex; i++) {
             User user = users.get(i);
             Label label = new Label(user.getName());
-            VBox userBox = new VBox(label);
+            Circle circle = new Circle(20);
+
+            // Check if there are any image files
+            if (imageFiles != null && imageFiles.length > 0) {
+                // Use the i-th image file to create an ImagePattern, cycling through the image files
+                Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                ImagePattern imagePattern = new ImagePattern(image);
+                circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
+            } else {
+                circle.setFill(Color.TEAL); // Use a default color if there's no image file
+            }
+
+            VBox userBox = new VBox(circle, label);
+            userBox.setAlignment(Pos.CENTER);
             userBox.getStyleClass().add("user-box");
             userBox.setPadding(new Insets(10));
             userBox.setOnMouseClicked(event -> {
@@ -285,12 +302,24 @@ public class AppController implements Initializable {
     }
 
     private void loadListSimilarUsers(List<UserSimilarity> userSimilarities) {
+        File imagesDir = new File("pfpImages");
+        File[] imageFiles = imagesDir.listFiles();
+
         int endIndex = Math.min(currentIndex + howManyLoaded, userSimilarities.size());
         for (int i = currentIndex; i < endIndex; i++) {
             UserSimilarity userSimilarity = userSimilarities.get(i);
             Label label = new Label(userSimilarity.getName() + " - Similarity: " + userSimilarity.getSimilarityPercent());
             Circle circle = new Circle(20);
-            circle.setFill(Color.TEAL);
+
+            if (imageFiles != null && imageFiles.length > 0) {
+                // Use the i-th image file to create an ImagePattern, cycling through the image files
+                Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                ImagePattern imagePattern = new ImagePattern(image);
+                circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
+            } else {
+                circle.setFill(Color.TEAL); // Use a default color if there's no image file
+            }
+
             VBox userBox = new VBox(circle, label);
             userBox.setAlignment(Pos.CENTER);
             userBox.getStyleClass().add("user-box");
