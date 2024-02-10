@@ -172,15 +172,16 @@ public class AppController implements Initializable {
            // Image image = new Image("https://picsum.photos/100?random=" + i);
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            imageView.setPreserveRatio(true);
+            imageView.setFitWidth(200);
+          //  imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
             movieBox.getStyleClass().add("movie-box");
             movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(100);
+            movieBox.setPrefWidth(200);
+            movieBox.setMinWidth(200);
             movieBox.setPadding(new Insets(10));
             listTopForUser.getChildren().add(movieBox);
         }

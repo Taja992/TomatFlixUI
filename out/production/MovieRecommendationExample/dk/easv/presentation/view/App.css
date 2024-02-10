@@ -6,7 +6,7 @@
 }
 
 .vBoxMain {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, rgb(0, 0, 0), rgb(50, 50, 50));
+    -fx-background-color: transparent;
 }
 
 .scroll-pane, .vbox, .hbox {
@@ -74,5 +74,6 @@
 }
 
 
-
-
+.spMain {
+    -fx-background-color: transparent;
+}

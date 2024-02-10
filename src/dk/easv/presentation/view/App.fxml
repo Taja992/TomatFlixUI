@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox xmlns="http://javafx.com/javafx/21" styleClass="main" stylesheets="/dk/easv/presentation/view/App.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+<VBox styleClass="main" stylesheets="/dk/easv/presentation/view/App.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <children>
       <HBox fx:id="hboxMenu" alignment="CENTER_LEFT" minHeight="90.0" minWidth="1200.0" prefHeight="90.0" prefWidth="1317.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
@@ -46,7 +45,7 @@
                      <children>
                         <VBox minHeight="120.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="lblTitle" text="Users" />
+                              <Label styleClass="lblTitle" text="Select User" />
                               <ScrollPane fx:id="spUsers" minHeight="37.0" minWidth="900.0">
                                  <content>
                                     <HBox fx:id="listUsers" />
