@@ -140,17 +140,11 @@ public class AppController implements Initializable {
 
 
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(200);
-            imageView.setFitWidth(250);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
             movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
-            movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(200);
             movieBox.setMinWidth(200);
             listTopAvgNotSeen.getChildren().add(movieBox);
             listTopAvgNotSeen.setSpacing(65);
@@ -174,17 +168,11 @@ public class AppController implements Initializable {
 
 
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(200);
-            imageView.setFitWidth(250);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
             movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
-            movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(200);
             movieBox.setMinWidth(200);
             listTopForUser.getChildren().add(movieBox);
             listTopForUser.setSpacing(65);
@@ -193,7 +181,7 @@ public class AppController implements Initializable {
     }
 
     private void loadTopFromSimilar(List<TopMovie> movies) {
-        File imagesDir = new File("images"); // Directory where your images are stored
+        File imagesDir = new File("images");
         File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
 
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
@@ -205,19 +193,12 @@ public class AppController implements Initializable {
                 image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
             }
 
-
             ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(200);
-            imageView.setFitWidth(250);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
             imageView.setCache(true);
             Label label = new Label(movie.getTitle());
             VBox movieBox = new VBox(imageView, label);
             movieBox.setAlignment(Pos.CENTER);
             movieBox.getStyleClass().add("movie-box");
-            movieBox.setPrefHeight(100);
-            movieBox.setPrefWidth(200);
             movieBox.setMinWidth(200);
             listTopFromSimilar.getChildren().add(movieBox);
             listTopFromSimilar.setSpacing(65);
