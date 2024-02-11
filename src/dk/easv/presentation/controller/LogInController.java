@@ -35,6 +35,8 @@ public class LogInController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
+            stage.setWidth(1200);
+            stage.setHeight(800);
             stage.setScene(new Scene(root));
             stage.setTitle("Movie Recommendation System 0.01 Beta");
             stage.show();

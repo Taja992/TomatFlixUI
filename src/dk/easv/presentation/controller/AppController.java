@@ -3,8 +3,6 @@ package dk.easv.presentation.controller;
 import dk.easv.entities.*;
 import dk.easv.presentation.model.AppModel;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,11 +51,10 @@ public class AppController implements Initializable {
     @FXML
     private HBox listTopAvgNotSeen;
     private int currentIndex = 0;
-    private static final int howManyLoaded = 20;
-    private static final int howManyUsersLoaded = 13;
+    private static final int howManyLoaded = 10;
+
+    private static final int howManyUsersLoaded = 20;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
-
-
     private AppModel model;
     private long timerStartMillis = 0;
     private String timerMsg = "";
@@ -280,7 +276,7 @@ public class AppController implements Initializable {
         File imagesDir = new File("pfpImages");
         File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
 
-        int endIndex = Math.min(currentIndex + howManyLoaded, users.size());
+        int endIndex = Math.min(currentIndex + howManyUsersLoaded, users.size());
         for (int i = currentIndex; i < endIndex; i++) {
             User user = users.get(i);
             Label label = new Label(user.getName());
@@ -288,7 +284,6 @@ public class AppController implements Initializable {
 
             // Check if there are any image files
             if (imageFiles != null && imageFiles.length > 0) {
-                // Use the i-th image file to create an ImagePattern, cycling through the image files
                 Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
                 ImagePattern imagePattern = new ImagePattern(image);
                 circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
@@ -339,7 +334,7 @@ public class AppController implements Initializable {
         File imagesDir = new File("pfpImages");
         File[] imageFiles = imagesDir.listFiles();
 
-        int endIndex = Math.min(currentIndex + howManyLoaded, userSimilarities.size());
+        int endIndex = Math.min(currentIndex + howManyUsersLoaded, userSimilarities.size());
         for (int i = currentIndex; i < endIndex; i++) {
 
 
@@ -351,7 +346,6 @@ public class AppController implements Initializable {
                 Circle circle = new Circle(20);
 
                 if (imageFiles != null && imageFiles.length > 0) {
-                    // Use the i-th image file to create an ImagePattern, cycling through the image files
                     Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
                     ImagePattern imagePattern = new ImagePattern(image);
                     circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle

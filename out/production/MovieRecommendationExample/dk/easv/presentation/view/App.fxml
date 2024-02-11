@@ -20,15 +20,15 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </Pane>
-            <Button styleClass="menuButton" mnemonicParsing="false" text="Home">
+            <Button mnemonicParsing="false" styleClass="menuButton" text="Home">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Button styleClass="menuButton" mnemonicParsing="false" text="TV Shows" />
-            <Button styleClass="menuButton" mnemonicParsing="false" text="Movies" />
-            <Button styleClass="menuButton" mnemonicParsing="false" text="Latest" />
-            <Button styleClass="menuButton" mnemonicParsing="false" text="My List" />
+            <Button mnemonicParsing="false" styleClass="menuButton" text="TV Shows" />
+            <Button mnemonicParsing="false" styleClass="menuButton" text="Movies" />
+            <Button mnemonicParsing="false" styleClass="menuButton" text="Latest" />
+            <Button mnemonicParsing="false" styleClass="menuButton" text="My List" />
          </children>
          <VBox.margin>
             <Insets />
@@ -37,7 +37,7 @@
             <Insets bottom="20.0" top="20.0" />
          </padding>
       </HBox>
-      <ScrollPane fitToWidth="true" prefHeight="737.0" prefWidth="1194.0" styleClass="spMain">
+      <ScrollPane fitToWidth="true" prefWidth="1194.0" styleClass="spMain">
          <content>
             <VBox spacing="10.0" styleClass="vBoxMain" stylesheets="/dk/easv/presentation/view/App.css">
                <children>
