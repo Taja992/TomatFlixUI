@@ -197,6 +197,7 @@ public class AppController implements Initializable {
             }
             currentIndex = endIndex;
         });
+
         t.start();
     }
 
@@ -297,7 +298,7 @@ public class AppController implements Initializable {
             userBox.setPadding(new Insets(10));
             userBox.setOnMouseClicked(event -> {
                 highlightUser(userBox);
-                executor.submit(() -> {
+                Thread t = new Thread(() -> {
                     model.loadData(user);
                     Platform.runLater(() -> {
                         populateMovieNotSeen(model);
@@ -306,11 +307,13 @@ public class AppController implements Initializable {
                         populateSimilarUsers(model);
                     });
                 });
+                t.start();
             });
             listUsers.getChildren().add(userBox);
         }
         currentIndex = endIndex;
     }
+
 
 
     private void highlightUser(VBox userBox) {
