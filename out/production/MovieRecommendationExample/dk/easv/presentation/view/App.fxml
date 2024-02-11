@@ -20,15 +20,15 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </Pane>
-            <Button mnemonicParsing="false" text="Home">
+            <Button styleClass="menuButton" mnemonicParsing="false" text="Home">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="TV Shows" />
-            <Button mnemonicParsing="false" text="Movies" />
-            <Button mnemonicParsing="false" text="Latest" />
-            <Button mnemonicParsing="false" text="My List" />
+            <Button styleClass="menuButton" mnemonicParsing="false" text="TV Shows" />
+            <Button styleClass="menuButton" mnemonicParsing="false" text="Movies" />
+            <Button styleClass="menuButton" mnemonicParsing="false" text="Latest" />
+            <Button styleClass="menuButton" mnemonicParsing="false" text="My List" />
          </children>
          <VBox.margin>
             <Insets />

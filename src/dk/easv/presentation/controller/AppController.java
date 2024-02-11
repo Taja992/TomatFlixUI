@@ -28,6 +28,8 @@ import javafx.scene.shape.Circle;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AppController implements Initializable {
 
@@ -54,6 +56,7 @@ public class AppController implements Initializable {
     private int currentIndex = 0;
     private static final int howManyLoaded = 20;
     private static final int howManyUsersLoaded = 13;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
 
     private AppModel model;
@@ -126,85 +129,117 @@ public class AppController implements Initializable {
     }
 
     private void loadMovieNotSeen(List<Movie> movies) {
+        Thread t = new Thread(() -> {
         File imagesDir = new File("images");
         File[] imageFiles = imagesDir.listFiles();
 
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
-            Movie movie = movies.get(i);
+
+            if (!movies.isEmpty() && i < movies.size()) {
+                Movie movie = movies.get(i);
 
 
-            Image image = null;
-            if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
+                Image image = null;
+                if (imageFiles != null && imageFiles.length > 0) {
+                    image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
+                }
+
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(250);
+                imageView.setPreserveRatio(true);
+                imageView.setCache(true);
+                Label label = new Label(movie.getTitle());
+                VBox movieBox = new VBox(imageView, label);
+                movieBox.setAlignment(Pos.CENTER);
+                movieBox.getStyleClass().add("movie-box");
+                movieBox.setMinWidth(200);
+                Platform.runLater(() -> {
+                    listTopAvgNotSeen.getChildren().add(movieBox);
+                    listTopAvgNotSeen.setSpacing(65);
+                });
             }
-
-
-            ImageView imageView = new ImageView(image);
-            imageView.setCache(true);
-            Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(imageView, label);
-            movieBox.setAlignment(Pos.CENTER);
-            movieBox.getStyleClass().add("movie-box");
-            movieBox.setMinWidth(200);
-            listTopAvgNotSeen.getChildren().add(movieBox);
-            listTopAvgNotSeen.setSpacing(65);
         }
-        currentIndex = endIndex;
+            currentIndex = endIndex;
+        });
+        t.start();
     }
 
 
     private void loadListTopForUser(List<Movie> movies) {
-        File imagesDir = new File("images");
-        File[] imageFiles = imagesDir.listFiles();
+        Thread t = new Thread(() -> {
+            File imagesDir = new File("images");
+            File[] imageFiles = imagesDir.listFiles();
 
-        int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
-        for (int i = currentIndex; i < endIndex; i++) {
-            Movie movie = movies.get(i);
+            int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
+            for (int i = currentIndex; i < endIndex; i++) {
 
-            Image image = null;
-            if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
+                if (!movies.isEmpty() && i < movies.size()) {
+                    Movie movie = movies.get(i);
+
+                    Image image = null;
+                    if (imageFiles != null && imageFiles.length > 0) {
+                        image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
+                    }
+
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitHeight(200);
+                    imageView.setFitWidth(250);
+                    imageView.setPreserveRatio(true);
+                    imageView.setCache(true);
+                    Label label = new Label(movie.getTitle());
+                    VBox movieBox = new VBox(imageView, label);
+                    movieBox.setAlignment(Pos.CENTER);
+                    movieBox.getStyleClass().add("movie-box");
+                    movieBox.setMinWidth(200);
+                    Platform.runLater(() -> {
+                        listTopForUser.getChildren().add(movieBox);
+                        listTopForUser.setSpacing(65);
+                    });
+                }
             }
-
-
-            ImageView imageView = new ImageView(image);
-            imageView.setCache(true);
-            Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(imageView, label);
-            movieBox.setAlignment(Pos.CENTER);
-            movieBox.getStyleClass().add("movie-box");
-            movieBox.setMinWidth(200);
-            listTopForUser.getChildren().add(movieBox);
-            listTopForUser.setSpacing(65);
-        }
-        currentIndex = endIndex;
+            currentIndex = endIndex;
+        });
+        t.start();
     }
 
     private void loadTopFromSimilar(List<TopMovie> movies) {
+        Thread t = new Thread(() -> {
         File imagesDir = new File("images");
         File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
 
         int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
         for (int i = currentIndex; i < endIndex; i++) {
-            Movie movie = movies.get(i).getMovie();
 
-            Image image = null;
-            if (imageFiles != null && imageFiles.length > 0) {
-                image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 250, 200, true, true);
+            if (!movies.isEmpty() && i < movies.size()) {
+                Movie movie = movies.get(i).getMovie();
+
+
+                Image image = null;
+                if (imageFiles != null && imageFiles.length > 0) {
+                    image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
+                }
+
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(250);
+                imageView.setPreserveRatio(true);
+                imageView.setCache(true);
+                Label label = new Label(movie.getTitle());
+                VBox movieBox = new VBox(imageView, label);
+                movieBox.setAlignment(Pos.CENTER);
+                movieBox.getStyleClass().add("movie-box");
+                movieBox.setMinWidth(200);
+                Platform.runLater(() -> {
+                    listTopFromSimilar.getChildren().add(movieBox);
+                    listTopFromSimilar.setSpacing(65);
+                });
             }
-
-            ImageView imageView = new ImageView(image);
-            imageView.setCache(true);
-            Label label = new Label(movie.getTitle());
-            VBox movieBox = new VBox(imageView, label);
-            movieBox.setAlignment(Pos.CENTER);
-            movieBox.getStyleClass().add("movie-box");
-            movieBox.setMinWidth(200);
-            listTopFromSimilar.getChildren().add(movieBox);
-            listTopFromSimilar.setSpacing(65);
         }
         currentIndex = endIndex;
+        });
+        t.start();
     }
 
     private void scrollPaneListenerTopAvgNotSeen(){
@@ -267,7 +302,7 @@ public class AppController implements Initializable {
             userBox.setPadding(new Insets(10));
             userBox.setOnMouseClicked(event -> {
                 highlightUser(userBox);
-                Thread t = new Thread(() -> {
+                executor.submit(() -> {
                     model.loadData(user);
                     Platform.runLater(() -> {
                         populateMovieNotSeen(model);
@@ -276,7 +311,6 @@ public class AppController implements Initializable {
                         populateSimilarUsers(model);
                     });
                 });
-                t.start();
             });
             listUsers.getChildren().add(userBox);
         }
@@ -307,26 +341,32 @@ public class AppController implements Initializable {
 
         int endIndex = Math.min(currentIndex + howManyLoaded, userSimilarities.size());
         for (int i = currentIndex; i < endIndex; i++) {
-            UserSimilarity userSimilarity = userSimilarities.get(i);
-            Label label = new Label(userSimilarity.getName() + " - Similarity: " + userSimilarity.getSimilarityPercent());
-            Circle circle = new Circle(20);
 
-            if (imageFiles != null && imageFiles.length > 0) {
-                // Use the i-th image file to create an ImagePattern, cycling through the image files
-                Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
-                ImagePattern imagePattern = new ImagePattern(image);
-                circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
-            } else {
-                circle.setFill(Color.TEAL); // Use a default color if there's no image file
+
+            if (!userSimilarities.isEmpty() && i < userSimilarities.size()) {
+                UserSimilarity userSimilarity = userSimilarities.get(i);
+
+
+                Label label = new Label(userSimilarity.getName() + " - Similarity: " + userSimilarity.getSimilarityPercent());
+                Circle circle = new Circle(20);
+
+                if (imageFiles != null && imageFiles.length > 0) {
+                    // Use the i-th image file to create an ImagePattern, cycling through the image files
+                    Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                    ImagePattern imagePattern = new ImagePattern(image);
+                    circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
+                } else {
+                    circle.setFill(Color.TEAL); // Use a default color if there's no image file
+                }
+
+                VBox userBox = new VBox(circle, label);
+                userBox.setAlignment(Pos.CENTER);
+                userBox.getStyleClass().add("user-box");
+                userBox.setPrefHeight(25);
+                userBox.setPrefWidth(100);
+                userBox.setPadding(new Insets(10));
+                listTopSimilarUsers.getChildren().add(userBox);
             }
-
-            VBox userBox = new VBox(circle, label);
-            userBox.setAlignment(Pos.CENTER);
-            userBox.getStyleClass().add("user-box");
-            userBox.setPrefHeight(25);
-            userBox.setPrefWidth(100);
-            userBox.setPadding(new Insets(10));
-            listTopSimilarUsers.getChildren().add(userBox);
         }
         currentIndex = endIndex;
     }
