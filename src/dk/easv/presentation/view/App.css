@@ -77,3 +77,15 @@
 .spMain {
     -fx-background-color: transparent;
 }
+
+.menuButton {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-family: 'Bebas Neue', sans-serif;
+    -fx-font-size: 24;
+    -fx-text-fill: #ffffff;
+}
+
+.menuButton:hover {
+    -fx-text-fill: #818181;
+}
