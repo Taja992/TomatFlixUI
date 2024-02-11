@@ -21,12 +21,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-
 import java.io.File;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 public class AppController implements Initializable {
 
@@ -54,7 +52,6 @@ public class AppController implements Initializable {
     private static final int howManyLoaded = 10;
 
     private static final int howManyUsersLoaded = 20;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private AppModel model;
     private long timerStartMillis = 0;
     private String timerMsg = "";
