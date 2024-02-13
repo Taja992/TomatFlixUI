@@ -282,7 +282,7 @@ public class AppController implements Initializable {
 
             // Check if there are any image files
             if (imageFiles != null && imageFiles.length > 0) {
-                Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString());
+                Image image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 50, 50, true, true);
                 ImagePattern imagePattern = new ImagePattern(image);
                 circle.setFill(imagePattern); // Use the ImagePattern to fill the Circle
             } else {
