@@ -18,6 +18,8 @@
       .idea/**/usage.statistics.xml
       .idea/**/dictionaries
       .idea/**/shelf
+      .idea/**/misc.xml
+
 
       # AWS User-specific
       .idea/**/aws.xml
@@ -122,3 +124,5 @@
       .idea/**/azureSettings.xml
 
       # End of https://www.toptal.com/developers/gitignore/api/intellij
+
+.idea/misc.xml
