@@ -3,6 +3,7 @@ package dk.easv.presentation.controller;
 import dk.easv.entities.User;
 import dk.easv.presentation.model.AppModel;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
     @FXML private MFXPasswordField passwordField;
-    @FXML private TextField userId;
+    @FXML private MFXTextField userId;
     private AppModel model;
 
     @Override
