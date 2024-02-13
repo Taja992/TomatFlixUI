@@ -289,6 +289,7 @@ public class AppController implements Initializable {
                 circle.setFill(Color.TEAL); // Use a default color if there's no image file
             }
 
+
             VBox userBox = new VBox(circle, label);
             userBox.setAlignment(Pos.CENTER);
             userBox.getStyleClass().add("user-box");
