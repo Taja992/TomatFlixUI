@@ -32,32 +32,28 @@ public class LogInController implements Initializable {
         model.loadUsers();
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser()!=null){
-        try {
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/testView.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setWidth(1200);
-            stage.setHeight(800);
-            stage.setScene(new Scene(root));
-            stage.setTitle("Movie Recommendation System 0.01 Beta");
-            stage.show();
-            /*
-            AppController controller = loader.getController();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setWidth(1200);
+                stage.setHeight(800);
+                stage.setScene(new Scene(root));
+                stage.setTitle("Movie Recommendation System 0.01 Beta");
+                stage.show();
+                AppController controller = loader.getController();
 
-            controller.setModel(model);
-             */
-            Stage current = (Stage) userId.getScene().getWindow();
-            current.close();
+                controller.setModel(model);
 
 
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
-            alert.showAndWait();
-        }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
+                alert.showAndWait();
+            }
 
         }
         else{
