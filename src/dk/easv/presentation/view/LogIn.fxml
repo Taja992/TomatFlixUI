@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" stylesheets="/dk/easv/presentation/view/App.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
-   <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="454.0">
+<VBox styleClass="main" stylesheets="/dk/easv/presentation/view/App.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <GridPane layoutX="104.0" layoutY="49.0" prefHeight="110.0" prefWidth="245.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to TomatFlix!" textAlignment="CENTER" textOrigin="CENTER" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
+         <children>
+            <GridPane alignment="CENTER" prefHeight="100.0" prefWidth="289.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -22,24 +29,31 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <PasswordField disable="true" fx:id="passwordField" GridPane.rowIndex="1" />
-                  <TextField fx:id="userId" text="Youssef Calkin" />
-               </children>
-            </GridPane>
-            <GridPane layoutX="160.0" layoutY="159.0" prefHeight="30.0" prefWidth="133.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Button mnemonicParsing="false" onAction="#logIn" text="log - in" />
-                  <Button mnemonicParsing="false" onAction="#signUp" text="Sig - Up" GridPane.columnIndex="1" />
+                  <TextField fx:id="userId" />
+                  <PasswordField fx:id="passwordField" text="Youssef Calkin" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="36.0" prefWidth="600.0">
+         <children>
+            <GridPane alignment="CENTER" prefHeight="39.0" prefWidth="279.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logIn" text="Log in" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#signUp" text="Sign up" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+         </children>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
