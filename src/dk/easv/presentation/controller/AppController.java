@@ -66,7 +66,7 @@ public class AppController implements Initializable {
     private long timerStartMillis = 0;
     private String timerMsg = "";
 
-    private double scrollPercent = 0.3;
+    private final double scrollPercent = 0.3;
 
     private void startTimer(String message){
         timerStartMillis = System.currentTimeMillis();
@@ -84,6 +84,7 @@ public class AppController implements Initializable {
         scrollPaneListenerTopFromSimilar();
         scrollPaneListenerUsers();
         spScroll();
+
     }
 
     public void setModel(AppModel model) {
@@ -167,6 +168,7 @@ public class AppController implements Initializable {
                 }
             }
             currentIndex = endIndex;
+
         });
         t.start();
     }
@@ -436,7 +438,7 @@ public class AppController implements Initializable {
         Button btn = (Button) actionEvent.getSource();
         HBox parent = (HBox) btn.getParent();
         ScrollPane pane = (ScrollPane) parent.getChildren().get(1);
-
+        HBox child = (HBox) pane.getContent();
 
         double animDuration = 0.5;
         if(!(pane.getHvalue() >= (pane.getHmax() - scrollPercent))){
@@ -452,24 +454,11 @@ public class AppController implements Initializable {
             //trying to make the animation shorter in proportion to how much of the original distance we're traveling
             double PercentageOfRegularScrollValue = (pane.getHmax() - pane.getHvalue()) / scrollPercent;
             double duration = animDuration * PercentageOfRegularScrollValue;
-            System.out.println(duration);
+            System.out.println("Anim Duration: " + duration);
             Animation anim = new Timeline(new KeyFrame(Duration.seconds(duration),
                     new KeyValue(pane.hvalueProperty(), pane.getHmax() )));
             anim.play();
         }
-
-        /*
-        anim.statusProperty().addListener(new ChangeListener<Animation.Status>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Animation.Status> observable, Animation.Status oldValue, Animation.Status newValue) {
-                if(newValue == Animation.Status.RUNNING){
-
-                }
-            }
-        });
-        //spTopAvgNotSeen.setHvalue(spTopAvgNotSeen.getHvalue() + (spTopAvgNotSeen.getHmax() * 0.5));
-         */
     }
 
     public void scrollMoviesL(ActionEvent actionEvent) {
@@ -486,6 +475,7 @@ public class AppController implements Initializable {
             System.out.println("HMax: " + pane.getHmax());
             System.out.println("getContent().getScaleX() : " + pane.getContent().getScaleX());
             System.out.println();
+
             Animation anim = new Timeline(new KeyFrame(Duration.seconds(animDuration),
                     new KeyValue(pane.hvalueProperty(), pane.getHvalue() - scrollPercent)));
             anim.play();
