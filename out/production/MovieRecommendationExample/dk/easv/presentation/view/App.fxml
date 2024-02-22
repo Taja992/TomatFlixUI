@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="main" stylesheets="/dk/easv/presentation/view/App.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+<VBox styleClass="main" stylesheets="/dk/easv/presentation/view/App.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <children>
       <HBox fx:id="hboxMenu" alignment="CENTER_LEFT" maxHeight="110.0" minHeight="90.0" minWidth="1200.0" prefHeight="90.0" prefWidth="1317.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
@@ -64,19 +64,23 @@
                         <VBox minHeight="150.0" styleClass="vboxTest" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top Average Rated Movies user did not see" />
-                              <HBox>
+                              <HBox alignment="CENTER" prefWidth="1254.0">
                                  <VBox.margin>
-                                    <Insets left="30.0" />
+                                    <Insets left="10.0" />
                                  </VBox.margin>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#scrollMoviesL" text="&lt;">
                                        <HBox.margin>
-                                          <Insets top="35.0" />
+                                          <Insets right="5.0" />
                                        </HBox.margin>
                                        <styleClass>
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
-                                       </styleClass></Button>
+                                       </styleClass>
+                                       <padding>
+                                          <Insets right="1.0" />
+                                       </padding>
+                                    </Button>
                                     <ScrollPane fx:id="spTopAvgNotSeen" fitToHeight="true" fitToWidth="true" minHeight="185.0" styleClass="spTest">
                                        <content>
                                           <HBox fx:id="listTopAvgNotSeen" styleClass="hboxtest" />
@@ -84,20 +88,21 @@
                                     </ScrollPane>
                                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#scrollMoviesR" text="&gt;">
                                        <HBox.margin>
-                                          <Insets top="35.0" />
+                                          <Insets left="5.0" />
                                        </HBox.margin>
                                        <styleClass>
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
-                                       </styleClass></Button>
+                                       </styleClass>
+                                       <padding>
+                                          <Insets left="1.0" />
+                                       </padding>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets left="10.0" right="30.0" />
-                     </padding>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -107,9 +112,9 @@
                         <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top Average Movies for user" />
-                              <HBox>
+                              <HBox alignment="CENTER">
                                  <VBox.margin>
-                                    <Insets left="30.0" />
+                                    <Insets left="10.0" />
                                  </VBox.margin>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#scrollMoviesL" text="&lt;">
@@ -117,6 +122,12 @@
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
                                        </styleClass>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets right="1.0" />
+                                       </padding>
                                     </Button>
                                     <ScrollPane fx:id="spTopForUser" fitToWidth="true" minHeight="185.0">
                                        <content>
@@ -128,15 +139,18 @@
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
                                        </styleClass>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="1.0" />
+                                       </padding>
                                     </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets left="10.0" right="30.0" />
-                     </padding>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -156,12 +170,6 @@
                                           <HBox fx:id="listTopSimilarUsers" />
                                        </content>
                                     </ScrollPane>
-                                    <Button mnemonicParsing="false" onAction="#scrollMoviesL" text="&lt;">
-                                       <styleClass>
-                                          <String fx:value="menuButton" />
-                                          <String fx:value="scrollButton" />
-                                       </styleClass>
-                                    </Button>
                                  </children>
                               </HBox>
                            </children>
@@ -179,9 +187,9 @@
                         <VBox minHeight="150.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="lblTitle" text="Top movies from similar users" />
-                              <HBox>
+                              <HBox alignment="CENTER">
                                  <VBox.margin>
-                                    <Insets left="30.0" />
+                                    <Insets left="10.0" />
                                  </VBox.margin>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#scrollMoviesL" text="&lt;">
@@ -189,6 +197,12 @@
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
                                        </styleClass>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets right="1.0" />
+                                       </padding>
                                     </Button>
                                     <ScrollPane fx:id="spTopFromSimilar" fitToWidth="true" minHeight="185.0">
                                        <content>
@@ -200,15 +214,18 @@
                                           <String fx:value="menuButton" />
                                           <String fx:value="scrollButton" />
                                        </styleClass>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="1.0" />
+                                       </padding>
                                     </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets left="10.0" right="30.0" />
-                     </padding>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

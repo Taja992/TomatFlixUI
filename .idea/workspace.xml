@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08c40ecf-a31e-4feb-bc2f-54c9501eedaa" name="Changes" comment="-Centered Buttons&#10;-Made them smaller to reduce void space&#10;-Deleted extra button">
+      <change beforePath="$PROJECT_DIR$/out/production/MovieRecommendationExample/dk/easv/presentation/view/App.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MovieRecommendationExample/dk/easv/presentation/view/App.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dk.easv.Main" />
+      <module name="MovieRecommendationExample" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dk.easv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-Centered Buttons&#10;-Made them smaller to reduce void space&#10;-Deleted extra button" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Centered Buttons&#10;-Made them smaller to reduce void space&#10;-Deleted extra button" />
+  </component>
+</project>
