@@ -442,11 +442,7 @@ public class AppController implements Initializable {
 
         double animDuration = 0.5;
         if(!(pane.getHvalue() >= (pane.getHmax() - scrollPercent))){
-            System.out.println("HValue: " + pane.getHvalue());
-            System.out.println("HValue after scroll: " + (pane.getHvalue() + scrollPercent));
-            System.out.println("HMax: " + pane.getHmax());
-            System.out.println("getContent().getScaleX() : " + pane.getContent().getScaleX());
-            System.out.println();
+
             Animation anim = new Timeline(new KeyFrame(Duration.seconds(animDuration),
                     new KeyValue(pane.hvalueProperty(), pane.getHvalue() + scrollPercent)));
             anim.play();
@@ -454,7 +450,6 @@ public class AppController implements Initializable {
             //trying to make the animation shorter in proportion to how much of the original distance we're traveling
             double PercentageOfRegularScrollValue = (pane.getHmax() - pane.getHvalue()) / scrollPercent;
             double duration = animDuration * PercentageOfRegularScrollValue;
-            System.out.println("Anim Duration: " + duration);
             Animation anim = new Timeline(new KeyFrame(Duration.seconds(duration),
                     new KeyValue(pane.hvalueProperty(), pane.getHmax() )));
             anim.play();
@@ -470,11 +465,7 @@ public class AppController implements Initializable {
 
         double animDuration = 0.5;
         if(!(pane.getHvalue() >= (pane.getHmax() + scrollPercent))){
-            System.out.println("HValue: " + pane.getHvalue());
-            System.out.println("HValue after scroll: " + (pane.getHvalue() - scrollPercent));
-            System.out.println("HMax: " + pane.getHmax());
-            System.out.println("getContent().getScaleX() : " + pane.getContent().getScaleX());
-            System.out.println();
+
 
             Animation anim = new Timeline(new KeyFrame(Duration.seconds(animDuration),
                     new KeyValue(pane.hvalueProperty(), pane.getHvalue() - scrollPercent)));
