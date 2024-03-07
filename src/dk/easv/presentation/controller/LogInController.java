@@ -2,8 +2,6 @@ package dk.easv.presentation.controller;
 
 import dk.easv.entities.User;
 import dk.easv.presentation.model.AppModel;
-import io.github.palexdev.materialfx.controls.MFXPasswordField;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +18,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
-    @FXML private MFXPasswordField passwordField;
-    @FXML private MFXTextField userId;
+    @FXML private PasswordField passwordField;
+    @FXML private TextField userId;
     private AppModel model;
 
     @Override
@@ -33,28 +31,28 @@ public class LogInController implements Initializable {
         model.loadUsers();
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser()!=null){
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
-                Parent root = loader.load();
-                Stage stage = new Stage();
-                stage.setWidth(1200);
-                stage.setHeight(800);
-                stage.setScene(new Scene(root));
-                stage.setTitle("Movie Recommendation System 0.01 Beta");
-                stage.show();
-                AppController controller = loader.getController();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setWidth(1200);
+            stage.setHeight(800);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Movie Recommendation System 0.01 Beta");
+            stage.show();
+            AppController controller = loader.getController();
 
-                controller.setModel(model);
-
-
+            controller.setModel(model);
 
 
 
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
-                alert.showAndWait();
-            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
+            alert.showAndWait();
+        }
 
         }
         else{

@@ -2,21 +2,13 @@ package dk.easv.presentation.controller;
 
 import dk.easv.entities.*;
 import dk.easv.presentation.model.AppModel;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -29,8 +21,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.util.Duration;
-
 import java.io.File;
 import java.net.URL;
 import java.util.*;
@@ -66,8 +56,6 @@ public class AppController implements Initializable {
     private long timerStartMillis = 0;
     private String timerMsg = "";
 
-    private final double scrollPercent = 0.3;
-
     private void startTimer(String message){
         timerStartMillis = System.currentTimeMillis();
         timerMsg = message;
@@ -84,7 +72,6 @@ public class AppController implements Initializable {
         scrollPaneListenerTopFromSimilar();
         scrollPaneListenerUsers();
         spScroll();
-
     }
 
     public void setModel(AppModel model) {
@@ -136,39 +123,38 @@ public class AppController implements Initializable {
 
     private void loadMovieNotSeen(List<Movie> movies) {
         Thread t = new Thread(() -> {
-            File imagesDir = new File("images");
-            File[] imageFiles = imagesDir.listFiles();
+        File imagesDir = new File("images");
+        File[] imageFiles = imagesDir.listFiles();
 
-            int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
-            for (int i = currentIndex; i < endIndex; i++) {
+        int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
+        for (int i = currentIndex; i < endIndex; i++) {
 
-                if (!movies.isEmpty() && i < movies.size()) {
-                    Movie movie = movies.get(i);
+            if (!movies.isEmpty() && i < movies.size()) {
+                Movie movie = movies.get(i);
 
 
-                    Image image = null;
-                    if (imageFiles != null && imageFiles.length > 0) {
-                        image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
-                    }
-
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitHeight(200);
-                    imageView.setFitWidth(250);
-                    imageView.setPreserveRatio(true);
-                    imageView.setCache(true);
-                    Label label = new Label(movie.getTitle());
-                    VBox movieBox = new VBox(imageView, label);
-                    movieBox.setAlignment(Pos.CENTER);
-                    movieBox.getStyleClass().add("movie-box");
-                    movieBox.setMinWidth(200);
-                    Platform.runLater(() -> {
-                        listTopAvgNotSeen.getChildren().add(movieBox);
-                        listTopAvgNotSeen.setSpacing(65);
-                    });
+                Image image = null;
+                if (imageFiles != null && imageFiles.length > 0) {
+                    image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
                 }
-            }
-            currentIndex = endIndex;
 
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(250);
+                imageView.setPreserveRatio(true);
+                imageView.setCache(true);
+                Label label = new Label(movie.getTitle());
+                VBox movieBox = new VBox(imageView, label);
+                movieBox.setAlignment(Pos.CENTER);
+                movieBox.getStyleClass().add("movie-box");
+                movieBox.setMinWidth(200);
+                Platform.runLater(() -> {
+                    listTopAvgNotSeen.getChildren().add(movieBox);
+                    listTopAvgNotSeen.setSpacing(65);
+                });
+            }
+        }
+            currentIndex = endIndex;
         });
         t.start();
     }
@@ -214,38 +200,38 @@ public class AppController implements Initializable {
 
     private void loadTopFromSimilar(List<TopMovie> movies) {
         Thread t = new Thread(() -> {
-            File imagesDir = new File("images");
-            File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
+        File imagesDir = new File("images");
+        File[] imageFiles = imagesDir.listFiles(); // List of all image files in the directory
 
-            int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
-            for (int i = currentIndex; i < endIndex; i++) {
+        int endIndex = Math.min(currentIndex + howManyLoaded, movies.size());
+        for (int i = currentIndex; i < endIndex; i++) {
 
-                if (!movies.isEmpty() && i < movies.size()) {
-                    Movie movie = movies.get(i).getMovie();
+            if (!movies.isEmpty() && i < movies.size()) {
+                Movie movie = movies.get(i).getMovie();
 
 
-                    Image image = null;
-                    if (imageFiles != null && imageFiles.length > 0) {
-                        image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
-                    }
-
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitHeight(200);
-                    imageView.setFitWidth(250);
-                    imageView.setPreserveRatio(true);
-                    imageView.setCache(true);
-                    Label label = new Label(movie.getTitle());
-                    VBox movieBox = new VBox(imageView, label);
-                    movieBox.setAlignment(Pos.CENTER);
-                    movieBox.getStyleClass().add("movie-box");
-                    movieBox.setMinWidth(200);
-                    Platform.runLater(() -> {
-                        listTopFromSimilar.getChildren().add(movieBox);
-                        listTopFromSimilar.setSpacing(65);
-                    });
+                Image image = null;
+                if (imageFiles != null && imageFiles.length > 0) {
+                    image = new Image(imageFiles[i % imageFiles.length].toURI().toString(), 275, 220, true, true);
                 }
+
+                ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(250);
+                imageView.setPreserveRatio(true);
+                imageView.setCache(true);
+                Label label = new Label(movie.getTitle());
+                VBox movieBox = new VBox(imageView, label);
+                movieBox.setAlignment(Pos.CENTER);
+                movieBox.getStyleClass().add("movie-box");
+                movieBox.setMinWidth(200);
+                Platform.runLater(() -> {
+                    listTopFromSimilar.getChildren().add(movieBox);
+                    listTopFromSimilar.setSpacing(65);
+                });
             }
-            currentIndex = endIndex;
+        }
+        currentIndex = endIndex;
         });
         t.start();
     }
@@ -345,8 +331,6 @@ public class AppController implements Initializable {
         });
     }
 
-
-
     private void loadListSimilarUsers(List<UserSimilarity> userSimilarities) {
         File imagesDir = new File("pfpImages");
         File[] imageFiles = imagesDir.listFiles();
@@ -432,56 +416,4 @@ public class AppController implements Initializable {
             }
         });
     }
-
-    public void scrollMoviesR(ActionEvent actionEvent) {
-        //getting the parent, then the scrollpane the button needs to scroll
-        Button btn = (Button) actionEvent.getSource();
-        HBox parent = (HBox) btn.getParent();
-        ScrollPane pane = (ScrollPane) parent.getChildren().get(1);
-        HBox child = (HBox) pane.getContent();
-
-        double animDuration = 0.5;
-        if(!(pane.getHvalue() >= (pane.getHmax() - scrollPercent))){
-
-            Animation anim = new Timeline(new KeyFrame(Duration.seconds(animDuration),
-                    new KeyValue(pane.hvalueProperty(), pane.getHvalue() + scrollPercent)));
-            anim.play();
-        } else{
-            //trying to make the animation shorter in proportion to how much of the original distance we're traveling
-            double PercentageOfRegularScrollValue = (pane.getHmax() - pane.getHvalue()) / scrollPercent;
-            double duration = animDuration * PercentageOfRegularScrollValue;
-            Animation anim = new Timeline(new KeyFrame(Duration.seconds(duration),
-                    new KeyValue(pane.hvalueProperty(), pane.getHmax() )));
-            anim.play();
-        }
-    }
-
-    public void scrollMoviesL(ActionEvent actionEvent) {
-        //getting the parent, then the scrollpane the button needs to scroll
-        Button btn = (Button) actionEvent.getSource();
-        HBox parent = (HBox) btn.getParent();
-        ScrollPane pane = (ScrollPane) parent.getChildren().get(1);
-
-
-        double animDuration = 0.5;
-        if(!(pane.getHvalue() >= (pane.getHmax() + scrollPercent))){
-
-
-            Animation anim = new Timeline(new KeyFrame(Duration.seconds(animDuration),
-                    new KeyValue(pane.hvalueProperty(), pane.getHvalue() - scrollPercent)));
-            anim.play();
-        } else{
-            //trying to make the animation shorter in proportion to how much of the original distance we're traveling
-            double PercentageOfRegularScrollValue = (pane.getHmax() - pane.getHvalue()) / scrollPercent;
-            double duration = animDuration * PercentageOfRegularScrollValue;
-            System.out.println(duration);
-            Animation anim = new Timeline(new KeyFrame(Duration.seconds(duration),
-                    new KeyValue(pane.hvalueProperty(), pane.getHmin() )));
-            anim.play();
-        }
-
-    }
-
-
-
 }

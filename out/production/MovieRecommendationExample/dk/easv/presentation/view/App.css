@@ -96,10 +96,6 @@
     -fx-text-fill: #ffffff;
 }
 
-.scrollButton {
-    -fx-font-size: 60;
-}
-
 .menuButton:hover {
     -fx-text-fill: #818181;
 }
