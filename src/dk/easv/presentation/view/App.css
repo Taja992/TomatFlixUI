@@ -36,6 +36,7 @@
 
 .scroll-pane .scroll-bar:horizontal {
     -fx-background-color: transparent;
+    -fx-opacity: 0;
 }
 
 .scroll-pane .scroll-bar:horizontal .thumb {
@@ -94,6 +95,11 @@
     -fx-font-family: 'Bebas Neue', sans-serif;
     -fx-font-size: 24;
     -fx-text-fill: #ffffff;
+}
+
+.scrollButton {
+    -fx-font-size: 60;
+    -fx-opacity: 0;
 }
 
 .menuButton:hover {
